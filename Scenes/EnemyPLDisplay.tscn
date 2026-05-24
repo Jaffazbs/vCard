@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://csqgi68wh4wpw"]
+
+[ext_resource type="Script" uid="uid://bjeyr7jub4gam" path="res://Scripts/PLDisplay.gd" id="1_fkun6"]
+[ext_resource type="Texture2D" uid="uid://kppc1qudlq5f" path="res://Assets/Circle1.png" id="2_46j5v"]
+
+[node name="PLDisplay" type="Node2D" unique_id=547067869]
+scale = Vector2(0.38, 0.38)
+script = ExtResource("1_fkun6")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=233046174]
+offset_left = -183.0
+offset_top = -78.0
+offset_right = 183.0
+offset_bottom = 78.0
+scale = Vector2(0.38, 0.38)
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Image" type="Sprite2D" parent="." unique_id=1216201676]
+position = Vector2(-1.5258789e-05, -7.748604e-06)
+rotation = 3.1415927
+scale = Vector2(0.38, 0.38)
+texture = ExtResource("2_46j5v")

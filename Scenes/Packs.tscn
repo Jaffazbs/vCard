@@ -1,0 +1,216 @@
+[gd_scene format=3 uid="uid://dnbwl28pl5l3a"]
+
+[ext_resource type="Script" uid="uid://datow2h1t086t" path="res://Scripts/CardCatalogue.gd" id="1_ti4rr"]
+[ext_resource type="Script" uid="uid://chjp3qvhmgg0i" path="res://Scripts/PullRateManager.gd" id="2_6uj8l"]
+[ext_resource type="AudioStream" uid="uid://bjujj5by270il" path="res://Assets/Audios/freesound_community-card-sounds-35956.mp3" id="3_3wf2m"]
+[ext_resource type="Texture2D" uid="uid://82eh1bljd80l" path="res://Assets/Bottom.png" id="3_s5abt"]
+[ext_resource type="Texture2D" uid="uid://dh3tvty7m0147" path="res://Assets/Top.png" id="4_3wf2m"]
+[ext_resource type="Texture2D" uid="uid://cvfrqnbg1sdvb" path="res://Assets/KairyuCrocodile.Pl10.Gr.png" id="5_w48bk"]
+
+[sub_resource type="Animation" id="Animation_y20dt"]
+resource_name = "CardOpen"
+length = 4.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Bottom:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.0066666603, 3.9666667, 4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Top:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.0066666603, 2.5566664, 2.5666666),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Bottom:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.0066666603, 2.5733333, 3.9666667),
+"transitions": PackedFloat32Array(12.996017, 1, 0.15389317),
+"update": 0,
+"values": [Vector2(21, 0), Vector2(21, 0), Vector2(21, 1085)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Top:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.0066666603, 0.50666666, 2.2965593),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(21, 0), Vector2(14.000001, 12.999996), Vector2(-72, -272.0001)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Top:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.0066666603, 0.50666666, 2.2965593),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 0.109339744, 1.3201132]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Top:scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.0066666603, 0.50666666, 2.2965593),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1.6, 1.6), Vector2(1.3783779, 1.7764705), Vector2(0.042, 1.6)]
+}
+
+[sub_resource type="Animation" id="Animation_8qbe2"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Bottom:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Top:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Bottom:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(21, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Top:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(21, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Top:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Top:scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(2, 2)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_sv8x3"]
+_data = {
+&"CardOpen": SubResource("Animation_y20dt"),
+&"RESET": SubResource("Animation_8qbe2")
+}
+
+[node name="Packs" type="Node2D" unique_id=799700250]
+visibility_layer = 2
+
+[node name="CardCataloge" type="Node2D" parent="." unique_id=1094946202]
+script = ExtResource("1_ti4rr")
+
+[node name="OpenPack" type="Button" parent="." unique_id=975287316]
+custom_minimum_size = Vector2(200, 75)
+offset_left = 462.0
+offset_top = 419.0
+offset_right = 662.0
+offset_bottom = 533.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="OpenPack" unique_id=1423389659]
+layout_mode = 0
+offset_left = 21.0
+offset_top = 37.0
+offset_right = 176.0
+offset_bottom = 77.0
+text = "OPEN PACK!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PullRateManager" type="Node2D" parent="." unique_id=1796393590]
+script = ExtResource("2_6uj8l")
+
+[node name="CardOpen" type="AnimationPlayer" parent="." unique_id=1011477833]
+libraries/ = SubResource("AnimationLibrary_sv8x3")
+autoplay = &"CardOpen"
+playback_auto_capture = false
+speed_scale = 4.0
+
+[node name="CardSFX" type="AudioStreamPlayer2D" parent="." unique_id=1604747895]
+stream = ExtResource("3_3wf2m")
+
+[node name="Bottom" type="Sprite2D" parent="." unique_id=1881891978]
+position = Vector2(21, 0)
+scale = Vector2(1.6, 1.6)
+texture = ExtResource("3_s5abt")
+
+[node name="Top" type="Sprite2D" parent="." unique_id=211228189]
+position = Vector2(21, 0)
+scale = Vector2(2, 2)
+texture = ExtResource("4_3wf2m")
+
+[node name="XampleCard" type="Sprite2D" parent="." unique_id=195111908]
+visible = false
+texture = ExtResource("5_w48bk")
+
+[connection signal="pressed" from="OpenPack" to="PullRateManager" method="_on_open_pack_pressed"]

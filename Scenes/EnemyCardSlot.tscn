@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://dmd77jay3yef3"]
+
+[ext_resource type="Script" uid="uid://cj2rvtjchfu86" path="res://Scripts/VTCardSlot.gd" id="1_338b4"]
+[ext_resource type="Texture2D" uid="uid://buqx3rey56n6c" path="res://Assets/Square.jpg" id="2_pa7lj"]
+
+[node name="EnemyCardSlot" type="Node2D" unique_id=2028711564]
+script = ExtResource("1_338b4")
+
+[node name="CardSlotImage" type="Sprite2D" parent="." unique_id=2097354620]
+position = Vector2(1.3422837e-06, 0)
+scale = Vector2(0.16898394, 0.220339)
+texture = ExtResource("2_pa7lj")

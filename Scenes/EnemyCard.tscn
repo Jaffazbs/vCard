@@ -1,0 +1,133 @@
+[gd_scene format=3 uid="uid://d3lbnx5hfm3hm"]
+
+[ext_resource type="Script" uid="uid://c4ucqx51m5qt6" path="res://Scripts/EnemyCard.gd" id="1_q6tie"]
+[ext_resource type="Texture2D" uid="uid://c6gdxv33wvwgt" path="res://Assets/Deck.CardBack.jpg" id="2_x8ab7"]
+[ext_resource type="Texture2D" uid="uid://k5vkhp0fgsos" path="res://Assets/Shylily.Pl8.png" id="3_q6tie"]
+
+[sub_resource type="Animation" id="Animation_kphy1"]
+resource_name = "Card_Flip"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CardImageBack:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0.36767676, 0.36767668), Vector2(0.036, 0.36), Vector2(0.36, 0.36)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CardImageBack:z_index")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, -1]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CardImage:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0.3690476, 0.3690476), Vector2(0.037, 0.369), Vector2(0.37, 0.369)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CardImage:z_index")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [-1, 0]
+}
+
+[sub_resource type="Animation" id="Animation_h8wm0"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CardImageBack:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.36767676, 0.36767668)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CardImageBack:z_index")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CardImage:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.3690476, 0.3690476)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CardImage:z_index")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [-1]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wejov"]
+_data = {
+&"Card_Flip": SubResource("Animation_kphy1"),
+&"RESET": SubResource("Animation_h8wm0")
+}
+
+[node name="Card" type="Node2D" unique_id=187645867]
+position = Vector2(739, 411)
+rotation = 3.1415927
+scale = Vector2(0.8, 0.8)
+script = ExtResource("1_q6tie")
+
+[node name="CardImageBack" type="Sprite2D" parent="." unique_id=447578013]
+position = Vector2(-6.109476e-06, -1.7821789e-05)
+scale = Vector2(0.36767676, 0.36767668)
+texture = ExtResource("2_x8ab7")
+
+[node name="CardImage" type="Sprite2D" parent="." unique_id=2093047220]
+z_index = -1
+position = Vector2(2.3841858e-07, -3.8146973e-06)
+scale = Vector2(0.3690476, 0.3690476)
+texture = ExtResource("3_q6tie")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=482548752]
+libraries/ = SubResource("AnimationLibrary_wejov")
