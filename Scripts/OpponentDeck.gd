@@ -1,7 +1,7 @@
 extends Node2D
 const CARD_SCENE_PATH = "res://Scenes/EnemyCard.tscn"
 const STARTING_HAND_SIZE = 7
-var opponent_deck = ["Shylily.Pl10", "Shylily.Pl9", "Shylily.Pl8", "OrcaPup", "Shylily.Pl10", "Shylily.Pl9", "Shylily.Pl8", "OrcaPup", "Shylily.Pl10", "Shylily.Pl9", "Shylily.Pl8"]
+var opponent_deck = ["OrcaPup", "OrcaPup"]
 var card_database_reference = ("res://Scripts/CardDataBase.gd")
 
 func _ready() -> void:
@@ -26,7 +26,10 @@ func draw_card():
 	var card_scene = preload(CARD_SCENE_PATH)
 	var new_card = card_scene.instantiate()
 	var card_image_path = str("res://Assets/" + card_drawn_name + ".png")
-	new_card.get_node("CardImage").texture = load(card_image_path)
+	var card_image = new_card.get_node("CardImage")
+	card_image.texture = load(card_image_path)
+	var tex_size = card_image.texture.get_size()
+	card_image.scale = Vector2(55, 77) / tex_size
 	new_card.card_type = card_database_reference.CARDS[card_drawn_name][1]
 	new_card.card_pl = card_database_reference.CARDS[card_drawn_name][2]
 	new_card.card_name_key = card_drawn_name

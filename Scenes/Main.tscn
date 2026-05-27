@@ -17,6 +17,7 @@
 [ext_resource type="Script" uid="uid://b6b7fm6vk0tkq" path="res://Scripts/EnemyHand.gd" id="7_grg3l"]
 [ext_resource type="Script" uid="uid://bg7b05n72abe6" path="res://Scripts/BattleManager.gd" id="10_bmxlf"]
 [ext_resource type="Script" uid="uid://1hg30papagc5" path="res://Scripts/OpponentDeck.gd" id="11_frkhe"]
+[ext_resource type="Script" uid="uid://d0iat28joox4s" path="res://Scripts/Abilties/ReinforcementManager.gd" id="18_346fj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vy5pj"]
 size = Vector2(74, 106)
@@ -161,5 +162,8 @@ text = "End Turn
 script = ExtResource("10_bmxlf")
 
 [node name="BattleTimer" type="Timer" parent="." unique_id=2123703115]
+
+[node name="ReinforcementManager" type="Node2D" parent="." unique_id=794256281]
+script = ExtResource("18_346fj")
 
 [connection signal="pressed" from="EndTurnButton" to="BattleManager" method="_on_end_turn_button_pressed"]

@@ -10,6 +10,8 @@ var card_name_key = ""
 var locked = false
 var support_subtype = ""
 var is_attached = false
+var card_vt_type = ""
+var reinforcement_trigger = ""
 
 func lock():
 	if locked:

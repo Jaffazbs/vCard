@@ -80,6 +80,7 @@ func finish_drag():
 		or ("support" in card_slot_found.card_slot_type
 		and card_being_dragged.card_type == "support"
 		and card_being_dragged.support_subtype != "ally"
+		and card_being_dragged.support_subtype != "reinforcement"
 		and not card_slot_found.card_in_slot)
 		or ("vt" not in card_slot_found.card_slot_type
 		and "mascot" not in card_slot_found.card_slot_type

@@ -1,7 +1,7 @@
 extends Node2D
 const CARD_SCENE_PATH = "res://Scenes/Card.tscn"
 const STARTING_HAND_SIZE = 7
-var player_deck = ["Sinder.Pl10", "Sinder.Pl9", "Sinder.Pl8", "PyroPup", "Sinder.Pl10", "Sinder.Pl9", "Sinder.Pl8", "PyroPup", "Sinder.Pl10", "Sinder.Pl9", "Sinder.Pl8", "CyanideChan", "CyanideChan", "CyanideChan", "HappinessChan", "HappinessChan", "HappinessChan"]
+var player_deck = ["Sinder.Pl10", "Sinder.Pl9", "Sinder.Pl8", "PyroPup", "Sinder.Pl10", "Sinder.Pl9", "Sinder.Pl8", "PyroPup", "Sinder.Pl10", "Sinder.Pl9", "Sinder.Pl8", "SnackCat", "SnackCat", "SnackCat"]
 var card_database_reference = ("res://Scripts/CardDataBase.gd")
 var drawn_card_this_turn = false
 
@@ -17,6 +17,25 @@ func _ready() -> void:
 func _on_Deck_input_event(_viewport, event, _shape_idx):
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
 		draw_card() 
+
+func draw_specific_card(card_name):
+	var card_scene = preload(CARD_SCENE_PATH)
+	var new_card = card_scene.instantiate()
+	var card_image_path = str("res://Assets/" + card_name + ".png")
+	new_card.get_node("CardImage").texture = load(card_image_path)
+	new_card.card_type = card_database_reference.CARDS[card_name][1]
+	new_card.card_pl = card_database_reference.CARDS[card_name][2]
+	new_card.card_name_key = card_name
+	var ability_path = card_database_reference.CARDS[card_name][3]
+	if ability_path:
+		new_card.ability_script = load(ability_path).new()
+	if card_database_reference.CARDS[card_name].size() > 5:
+		new_card.card_vt_type = card_database_reference.CARDS[card_name][5]
+	$"../CardManager".add_child(new_card)
+	new_card.name = "Card"
+	$"../PlayerHand".add_card_to_hand(new_card)
+	new_card.get_node("AnimationPlayer").play("Card_Flip")
+	$RichTextLabel.text = str(player_deck.size())
 
 func draw_card(ignore_limit = false):
 	if drawn_card_this_turn and not ignore_limit:
@@ -44,7 +63,10 @@ func draw_card(ignore_limit = false):
 	if new_card_ability_script_path:
 		new_card.ability_script = load(new_card_ability_script_path).new()
 	if card_database_reference.CARDS[card_drawn_name].size() > 5:
+		new_card.card_vt_type = card_database_reference.CARDS[card_drawn_name][5]
 		new_card.support_subtype = card_database_reference.CARDS[card_drawn_name][5]
+	if card_database_reference.CARDS[card_drawn_name].size() > 6:
+		new_card.reinforcement_trigger = card_database_reference.CARDS[card_drawn_name][6]
 	$"../CardManager".add_child(new_card)
 	new_card.name = "Card"
 	$"../PlayerHand".add_card_to_hand(new_card)
