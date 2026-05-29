@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bykwl34m46gfr" path="res://Scripts/Lobby.gd" id="1_y0s6v"]
 [ext_resource type="Script" uid="uid://cwpaxdq8r5c0e" path="res://Scripts/CollectionTab.gd" id="2_avk8s"]
+[ext_resource type="Script" uid="uid://cy7aaj4afilds" path="res://Scripts/DeckTab.gd" id="2_ruji2"]
 [ext_resource type="PackedScene" uid="uid://dnbwl28pl5l3a" path="res://Scenes/Packs.tscn" id="2_u1o2k"]
 
 [node name="Lobby" type="Control" unique_id=377230256]
@@ -49,6 +50,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("2_ruji2")
 
 [node name="CollectionTab" type="Control" parent="." unique_id=65915135]
 layout_mode = 1

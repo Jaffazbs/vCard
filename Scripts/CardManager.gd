@@ -100,11 +100,6 @@ func finish_drag():
 		var tween = create_tween()
 		tween.tween_property(card_being_dragged, "scale", Vector2(0.37, 0.37), 0.1)
 		card_being_dragged.get_node("Area2D/CollisionShape2D").disabled = true
-		
-		var card_image = card_being_dragged.get_node("CardImage")
-		var tex_size = card_image.texture.get_size()
-		card_image.scale = Vector2(220, 308) / tex_size
-		
 		var was_evolution = card_slot_found.card_in_slot != null
 		var inherited_bonus = 0
 		if was_evolution:

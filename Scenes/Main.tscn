@@ -17,7 +17,7 @@
 [ext_resource type="Script" uid="uid://b6b7fm6vk0tkq" path="res://Scripts/EnemyHand.gd" id="7_grg3l"]
 [ext_resource type="Script" uid="uid://bg7b05n72abe6" path="res://Scripts/BattleManager.gd" id="10_bmxlf"]
 [ext_resource type="Script" uid="uid://1hg30papagc5" path="res://Scripts/OpponentDeck.gd" id="11_frkhe"]
-[ext_resource type="Script" uid="uid://d0iat28joox4s" path="res://Scripts/Abilties/ReinforcementManager.gd" id="18_346fj"]
+[ext_resource type="Script" uid="uid://d0iat28joox4s" path="res://Scripts/ReinforcementManager.gd" id="18_346fj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vy5pj"]
 size = Vector2(74, 106)

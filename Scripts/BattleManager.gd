@@ -51,22 +51,22 @@ func try_to_play_card_with_best_pl():
 	
 	var tween = get_tree().create_tween()
 	tween.tween_property(card_with_best_pl, "position", random_empty_vt_card_slot.global_position, CARD_MOVE_SPEED)
-	var tween2 = get_tree().create_tween()
-	tween2.tween_property(card_with_best_pl, "scale", Vector2(SMALL_CARD_SCALE, SMALL_CARD_SCALE), CARD_MOVE_SPEED)
-	await tween2.finished
-	card_with_best_pl.get_node("AnimationPlayer").play("Card_Flip")
+	tween.parallel().tween_property(card_with_best_pl, "scale", Vector2(SMALL_CARD_SCALE, SMALL_CARD_SCALE), CARD_MOVE_SPEED)
 	$"../EnemyHand".remove_card_from_hand(card_with_best_pl)
 	random_empty_vt_card_slot.card_in_slot = card_with_best_pl
-
-	var card_image = card_with_best_pl.get_node("CardImage")
-	card_image.scale = Vector2(1, 1)
+	card_with_best_pl.get_node("AnimationPlayer").play("Card_Flip")
+	var anim_length = card_with_best_pl.get_node("AnimationPlayer").current_animation_length
+	get_tree().create_timer(anim_length).timeout.connect(func():
+		var ci = card_with_best_pl.get_node("CardImage")
+		var ts = ci.texture.get_size()
+		ci.scale = Vector2(588, 801) / ts * 0.369
+	)
 	
 	if card_with_best_pl.card_type == "mascot":
 		get_node("../ReinforcementManager").check_trigger("opponent_mascot")
 	
 	battle_timer.start()
 	await battle_timer.timeout
-
 func end_opponent_turn():
 	$"../Deck".reset_draw()
 	$"../EndTurnButton".visible = true

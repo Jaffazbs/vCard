@@ -6,6 +6,7 @@ var card_database_reference = ("res://Scripts/CardDataBase.gd")
 var drawn_card_this_turn = false
 
 func _ready() -> void:
+	player_deck = GlobalDeck.player_deck.duplicate()
 	player_deck.shuffle()
 	$RichTextLabel.text = str(player_deck.size())
 	card_database_reference = preload("res://Scripts/CardDataBase.gd")
@@ -22,7 +23,11 @@ func draw_specific_card(card_name):
 	var card_scene = preload(CARD_SCENE_PATH)
 	var new_card = card_scene.instantiate()
 	var card_image_path = str("res://Assets/" + card_name + ".png")
-	new_card.get_node("CardImage").texture = load(card_image_path)
+	var card_image = new_card.get_node("CardImage")
+	print(card_image_path)
+	card_image.texture = ResourceLoader.load(card_image_path, "", ResourceLoader.CACHE_MODE_IGNORE)
+	var tex_size = card_image.texture.get_size()
+	card_image.scale = Vector2(588, 801) / tex_size * 0.369
 	new_card.card_type = card_database_reference.CARDS[card_name][1]
 	new_card.card_pl = card_database_reference.CARDS[card_name][2]
 	new_card.card_name_key = card_name
@@ -55,7 +60,9 @@ func draw_card(ignore_limit = false):
 	var card_scene = preload(CARD_SCENE_PATH)
 	var new_card = card_scene.instantiate()
 	var card_image_path = str("res://Assets/" + card_drawn_name + ".png")
-	new_card.get_node("CardImage").texture = load(card_image_path)
+	var card_image = new_card.get_node("CardImage")
+	card_image.texture = ResourceLoader.load(card_image_path, "", ResourceLoader.CACHE_MODE_IGNORE)
+	var tex_size = card_image.texture.get_size()
 	new_card.card_type = card_database_reference.CARDS[card_drawn_name][1]
 	new_card.card_pl = card_database_reference.CARDS[card_drawn_name][2]
 	new_card.card_name_key = card_drawn_name
@@ -70,6 +77,9 @@ func draw_card(ignore_limit = false):
 	$"../CardManager".add_child(new_card)
 	new_card.name = "Card"
 	$"../PlayerHand".add_card_to_hand(new_card)
+	new_card.get_node("AnimationPlayer").animation_finished.connect(func(_anim):
+		card_image.scale = Vector2(588, 801) / tex_size * 0.369
+	)
 	new_card.get_node("AnimationPlayer").play("Card_Flip")
 func reset_draw():
 	drawn_card_this_turn = false
